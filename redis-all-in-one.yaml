@@ -1,54 +1,43 @@
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: local-storage
-provisioner: kubernetes.io/no-provisioner
-volumeBindingMode: WaitForFirstConsumer
-allowVolumeExpansion: true
-reclaimPolicy: Delete
----
 apiVersion: v1
-kind: PersistentVolume
+kind: PersistentVolumeClaim
 metadata:
-  name: local-pv1
+  name: redis-pv1
 spec:
   storageClassName: local-storage
-  capacity:
-    storage: 1Gi
   accessModes:
     - ReadWriteOnce
-  hostPath:
-    path: "/storage/data1"
+  resources:
+    requests:
+      storage: 1Gi  
 
 ---
 
 apiVersion: v1
-kind: PersistentVolume
+kind: PersistentVolumeClaim
 metadata:
-  name: local-pv2
+  name: redis-pv2
 spec:
   storageClassName: local-storage
-  capacity:
-    storage: 1Gi
   accessModes:
     - ReadWriteOnce
-  hostPath:
-    path: "/storage/data2"
+  resources:
+    requests:
+      storage: 1Gi  
 
 ---
 
 apiVersion: v1
-kind: PersistentVolume
+kind: PersistentVolumeClaim
 metadata:
-  name: local-pv3
+  name: redis-pv3
 spec:
   storageClassName: local-storage
-  capacity:
-    storage: 2Gi
   accessModes:
     - ReadWriteOnce
-  hostPath:
-    path: "/storage/data3"
+  resources:
+    requests:
+      storage: 1Gi  
+
 ---
 apiVersion: v1
 kind: ConfigMap
