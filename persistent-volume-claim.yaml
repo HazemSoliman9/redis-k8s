@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: redis-pv1
 spec:
-  storageClassName: local-storage
+  storageClassName: default
   accessModes:
     - ReadWriteOnce
   resources:
@@ -17,7 +17,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: redis-pv2
 spec:
-  storageClassName: local-storage
+  storageClassName: default
   accessModes:
     - ReadWriteOnce
   resources:
@@ -31,9 +31,12 @@ kind: PersistentVolumeClaim
 metadata:
   name: redis-pv3
 spec:
-  storageClassName: local-storage
+  storageClassName: default
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi  
+      storage: 2Gi  
+
+#  hostPath:
+#   path: "/storage/data3"
